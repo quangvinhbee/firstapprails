@@ -1,15 +1,12 @@
 <p>
-  <strong>Commenter:</strong>
-  <%= comment.commenter %>
+  <b><%= comment.commenter %></b>
 </p>
-
 <p>
-  <strong>Comment:</strong>
   <%= comment.body %>
 </p>
 
 <p>
-  <%= link_to 'Destroy Comment', [comment.article, comment],
+  <%= link_to 'Xóa', [comment.article, comment],class:"btn btn-danger",
               method: :delete,
               data: { confirm: "Are you sure?" } %>
 </p>

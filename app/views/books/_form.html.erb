@@ -1,0 +1,32 @@
+<%= form_with model: book do |form| %>
+  <div class="container">
+    <div>
+      <%= form.label :title %><br>
+      <%= form.text_field :title, class:'form-control' %>
+    </div>
+
+     <div>
+      <%= form.label :description %><br>
+      <%= form.text_area :description, class:'form-control' %>
+    </div>
+
+    <div>
+      <%= form.label :price %><br>
+      <%= form.text_field :price, class:'form-control' %>
+    </div>
+
+    <div class="form-group">
+        <%= form.label :author, "Author" %><br />
+        <%= form.select :author_id, Author.all.collect {|x| [x.name, x.id]}, {:include_blank => 'Select One'}, class:"form-control"%>
+    </div>
+
+    <div class="form-group">
+        <%= form.label :category, "Category" %><br />
+        <%= form.select :category_id, Category.all.collect {|x| [x.name, x.id]}, {:include_blank => 'Select One'}, class:"form-control"%>
+    </div>
+    
+    <div>
+      <%= form.submit 'Tạo sách mới',class: 'btn btn-success' %>
+    </div>
+  </div>
+<% end %>

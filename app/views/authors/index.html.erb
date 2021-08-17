@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>Danh sách tác giả</h1>
+  <%= link_to "Thêm tác giả",new_author_path, class:'btn btn-primary' %>
+  
+  <ul class="list-group">
+    <% @authors.each do |author| %>
+        <li class="list-group-item">
+          <%= link_to author.name, author %>
+        </li>
+    <% end %>
+  </ul>
+
+</div>

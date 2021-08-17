@@ -1,0 +1,25 @@
+<div class="container">
+    <h1>Giỏ hàng</h1>
+
+
+
+    <% @order_items.each do |item| %>
+
+        <h3><%= item.book.title %></h3>
+        <h5>Gia ban: <%= item.book.price %></h5>
+
+
+        <%= form_for item, remote: true do |f| %>
+            <%= f.hidden_field :book_id, :value => item.book.id %>
+            <%= f.label :quantity, :value => "Số lượng 1" %>
+            <%= link_to "Xóa sách", order_item_path(item), method: :delete, remote: true,class:'btn btn-danger' %>
+            <hr/>
+        <% end %>
+
+    <% end %>
+
+
+
+
+    <h3>Số lượng sách đã chọn là: <%= current_order.subtotal %></h3>
+</div>

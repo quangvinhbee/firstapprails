@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>Danh sách danh mục</h1>
+  <%= link_to "Thêm danh mục sách", new_category_path, class:'btn btn-primary' %>
+  
+  <ul class="list-group">
+    <% @categories.each do |category| %>
+        <li class="list-group-item">
+           <%= link_to category.name, category %>
+        </li>
+    <% end %>
+  </ul>
+
+</div>

@@ -1,0 +1,11 @@
+<%= form_with model: category do |form| %>
+  <div class="container">
+    <div>
+      <%= form.label :name %><br>
+      <%= form.text_field :name, class:'form-control' %>
+    </div>
+    <div>
+      <%= form.submit 'Tạo danh mục mới',class: 'btn btn-success' %>
+    </div>
+  </div>
+<% end %>

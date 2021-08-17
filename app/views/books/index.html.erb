@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>Danh sách Sách</h1>
+  <%= link_to "Thêm Sách",new_book_path, class:'btn btn-primary' %>
+  
+  <ul class="list-group">
+    <% @books.each do |book| %>
+        <li class="list-group-item">
+           <%= link_to book.title, book %>
+        </li>
+    <% end %>
+  </ul>
+
+</div>

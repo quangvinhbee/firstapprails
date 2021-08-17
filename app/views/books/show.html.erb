@@ -1,0 +1,10 @@
+<div class="container">
+    <h1 class=""><%= @book.title %></h1>
+    <p class=""><%= @book.description %></p>
+    <p class="">Giá bán: <%= @book.price %></p>
+    
+    <%= form_with model: @order_item do |form| %>
+    <%= form.hidden_field :book_id, value: @book.id %>
+    <%= form.submit "Thêm vào giỏ hàng",class:'btn btn-success' %>
+    <% end %>
+</div>
