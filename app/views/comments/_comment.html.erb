@@ -1,9 +1,11 @@
-<p>
-  <b><%= comment.commenter %></b>
-</p>
-<p>
-  <%= comment.body %>
-</p>
+
+<div class="media mb40">
+                        <i class="d-flex mr-3 fa fa-user-circle-o fa-3x"></i>
+                        <div class="media-body">
+                            <h5 class="mt-0 font400 clearfix">
+                            <%= comment.commenter %></h5><%= comment.body %>
+                        </div>
+                    </div>
 
 <p>
   <%= link_to 'Xóa', [comment.article, comment],class:"btn btn-danger",

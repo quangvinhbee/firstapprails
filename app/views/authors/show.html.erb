@@ -1,2 +1,13 @@
-<h1><%= @author.name %></h1>
+
+<header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Danh sách sách của tác giả <%= @author.name %></h1>
+                    <p class="lead fw-normal text-white-50 mb-0"></p>
+                </div>
+            </div>
+</header>
+ <%if current_user && current_user.admin%>
 <%= link_to "Thêm Sách", new_book_path(id:@author.id), class:'btn btn-primary' %>
+<%end%>
+<%=render 'session_book'%>

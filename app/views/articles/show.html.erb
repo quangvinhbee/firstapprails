@@ -1,8 +1,5 @@
 <div class="container">
-  <h1><%= @article.title %></h1>
-
-  <p><%= @article.body %></p>
-
+  <%if current_user && current_user.admin%>
     <div class="d-flex">
       <div class="">
         <%= link_to "Edit", edit_article_path(@article),class:'btn btn-primary' %>
@@ -13,27 +10,55 @@
                     data: { confirm: "Are you sure?" } %>
       </div>
     </div>
-
-  <h2>Comments</h2>
-  <%= render @article.comments %>
-
-  <h2>Add a comment:</h2>
-  <%= form_with model: [ @article, @article.comments.build ] do |form| %>
-    <p>
-      <%= form.label :commenter %><br>
-      <%= form.text_field :commenter %>
-    </p>
-    <p>
-      <%= form.label :body %><br>
-      <%= form.text_area :body %>
-    </p>
-     <div>
-      <%= form.label :status %><br>
-      <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+  <%end%>
+  <div class="container pb50">
+    <div class="row">
+        <div class="col-md-9 mb40">
+            <article>
+                <img src="https://images.unsplash.com/photo-1455734729978-db1ae4f687fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" alt="" class="img-fluid mb30">
+                <div class="post-content">
+                    <h3><%=@article.title%></h3>
+                    <ul class="post-meta list-inline">
+                        <li class="list-inline-item">
+                            <i class="fa fa-calendar-o"></i> <%=@article.created_at%></a>
+                        </li>
+                    </ul>
+                    <p> <%=@article.body%></p>
+                    <h4 class="mb40 text-uppercase font500">Comments</h4>
+                    <%= render @article.comments %>
+                    <hr class="mb40">
+                    <h4 class="mb40 text-uppercase font500">Post a comment</h4>
+                    <form role="form">
+                    <%= form_with model: [ @article, @article.comments.build ] do |form| %>
+                        <div class="form-group">
+                            <p>
+                              <%= form.label :Name %><br>
+                              <%= form.text_field :commenter, class:'form-control' %>
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <p>
+                              <%= form.label :Body %><br>
+                              <%= form.text_area :body, class:'form-control' %>
+                            </p>
+                        </div><br>
+                        <div>
+                          <%= form.label :status %><br>
+                          <%= form.select :status, ['public', 'private', 'archived'], selected: 'public',class:'form-control' %>
+                        </div>
+                        <br>
+                        <div class="clearfix float-right">
+                        <%= form.submit 'Đăng', class: "btn btn-primary btn-lg"%>
+                        </div>
+                          <% end %>
+                    </form>
+                </div>
+            </article>
+            <!-- post article-->
+        </div>
+        
+            
+        </div>
     </div>
-
-    <p>
-      <%= form.submit %>
-    </p>
-  <% end %>
 </div>
+  

@@ -1,24 +1,16 @@
 <div class="container">
-  <h1>Danh sách bài viết</h1>
 
-  <%= link_to "Thêm bài viết", new_article_path, class:'btn btn-primary' %>
+<header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Danh sách bài viết</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">Tất cả bài viết</p>
+                </div>
+            </div>
+        </header>
+ <%if current_user && current_user.admin%>
+   <%= link_to "Thêm bài viết", new_article_path, class:'btn btn-primary' %>
+  <%end%>
 
-  <ul class="list-group">
-    <% @articles.each do |article| %>
-      <% unless article.archived? %>
-        <li class="list-group-item">
-          <%= link_to article.title, article %>
-        </li>
-      <% end %>
-    <% end %>
-  </ul>
-
-  <div class="d-flex ">
-      <div class="">
-        <%= link_to "Danh sách tác giả", authors_path, class:'btn btn-success' %>
-      </div>
-      <div class="">
-        <%= link_to "Danh sách sách", books_path, class:'btn btn-success'%>
-      </div>
-   </div>
+  <%= render 'session'%>
 </div>

@@ -1,3 +1,10 @@
-<div class="container">
-    <h1 class=""><%= @category.name %></h1>
-</div>
+
+<header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Danh sách sách của danh mục <%= @category.name %></h1>
+                    <p class="lead fw-normal text-white-50 mb-0"></p>
+                </div>
+            </div>
+</header>
+<%= render 'session_book'%>

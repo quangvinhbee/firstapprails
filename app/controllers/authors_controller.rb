@@ -1,9 +1,11 @@
 class AuthorsController < ApplicationController
+   before_action :authenticate_user!, except: [:show,:index]
     def index
         @authors = Author.all
     end
     def show
       @author = Author.find(params[:id])
+      @books = Book.where(category_id: params[:id])
     end
     def new
       @author = Author.new

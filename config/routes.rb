@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
-  root "articles#index"
+  resources :posts
+  devise_for :users
+  root to: "articles#index"
 
   resources :authors do
     post 'books/new' => :createbook
   end
   resources :books
-  resources :categories,only:[:show]
+  resources :categories
   resources :order_items
-  resource :cards, only:[:show]
+  resource :cards
   resources :articles do
     resources :comments
   end

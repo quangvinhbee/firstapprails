@@ -1,13 +1,15 @@
 <div class="container">
-  <h1>Danh sách tác giả</h1>
+   <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Danh sách tác giả</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">Tất cả tác giả</p>
+                </div>
+            </div>
+        </header>
+   <%if current_user && current_user.admin%>
   <%= link_to "Thêm tác giả",new_author_path, class:'btn btn-primary' %>
+  <%end%>
   
-  <ul class="list-group">
-    <% @authors.each do |author| %>
-        <li class="list-group-item">
-          <%= link_to author.name, author %>
-        </li>
-    <% end %>
-  </ul>
-
+  <%= render 'session'%>
 </div>

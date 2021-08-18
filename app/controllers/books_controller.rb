@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!, except: [:show,:index]
     def index
       @books = Book.all
 

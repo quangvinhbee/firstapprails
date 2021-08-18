@@ -1,13 +1,16 @@
 <div class="container">
-  <h1>Danh sách danh mục</h1>
+  <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Danh sách danh mục</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">Tất cả danh mục</p>
+                </div>
+            </div>
+        </header>
+   <%if current_user && current_user.admin%>
   <%= link_to "Thêm danh mục sách", new_category_path, class:'btn btn-primary' %>
+  <%end%>
   
-  <ul class="list-group">
-    <% @categories.each do |category| %>
-        <li class="list-group-item">
-           <%= link_to category.name, category %>
-        </li>
-    <% end %>
-  </ul>
+   <%= render 'session'%>
 
 </div>
