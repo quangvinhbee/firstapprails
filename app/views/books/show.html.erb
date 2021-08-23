@@ -5,6 +5,28 @@
     
     <%= form_with model: @order_item do |form| %>
     <%= form.hidden_field :book_id, value: @book.id %>
-    <%= form.submit "Thêm vào giỏ hàng",class:'btn btn-success' %>
+    <%= form.submit "Thêm vào giỏ hàng",class:'btn btn-success',id: 'add_cards' %>
     <% end %>
 </div>
+
+<script>
+    var button = document.getElementById("add_cards");
+    button.addEventListener('click', function(){
+        console.log("ADD_Cards")
+        add_to_cards();
+    }, false);
+    function add_to_cards(){
+      var json_cards = "<%=@cards.order_items.to_json%>";
+      var cards_id_temp = window.localStorage.getItem("id_cards");
+      if(cards_id_temp!=null){cards_id = [cards_id_temp]}
+      else cards_id=[];
+      if(cards_id!=null){
+        cards_id.push("<%=@book.id%>")
+      }else{
+        cards_id=["<%=@book.id%>"]
+      }
+      
+      json_cards = json_cards.toString().replaceAll("&quot;","");
+      window.localStorage.setItem('id_cards',json_cards);
+    }
+</script>

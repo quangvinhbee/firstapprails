@@ -1,3 +1,28 @@
+
+<script>
+    var button = document.getElementById('checkout');
+    button.addEventListener('click', function(){
+        sendData();
+    }, false);
+    function sendData(){
+        var arrayOrder = window.localStorage.getItem("id_cards");
+       axios({
+        method: 'POST',
+        url: '/cards/createoder',
+        header:{
+            "Access-Control-Allow-Origin":  "http://127.0.0.1:3000",
+            "Access-Control-Allow-Methods": "POST",
+            "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        },
+        data: {
+            id_card: arrayOrder
+        }
+        });
+    }
+</script>
 <div id="card-item">
 <%= render 'cards_item'%>
+<%= link_to  "Thanh toán",cards_submit_path,id: 'checkout'%> 
+<button type="button" onclick="sendData()" id="checkout" class="btn btn-primary">Checkout</button>
 </div>
+

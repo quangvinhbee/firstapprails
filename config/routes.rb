@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :authors do
     post 'books/new' => :createbook
   end
+  get '/cards/submit', to: 'cards#submit'
+  post '/cards/createoder', to: 'cards#createoder'
   resources :books
   resources :categories
   resources :order_items
